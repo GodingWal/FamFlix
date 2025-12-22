@@ -1,0 +1,39 @@
+node_modules
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+
+# Local environment and data
+.env
+.env.backup.*
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+famflix.db
+famflix.test.db
+uploads/
+.local/
+
+# Python virtual environment
+.venv/
+.venv311/
+
+# Transient build/test artifacts
+temp/
+logs/
+coverage/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Replit
+.replit
+replit.nix

@@ -1,0 +1,15 @@
+[Unit]
+Description=FamFlix ML API Service
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/ml-api
+ExecStart=/opt/ml-api/venv/bin/python /opt/ml-api/main.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+Environment=PORT=8080
+
+[Install]
+WantedBy=multi-user.target

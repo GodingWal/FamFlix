@@ -1,0 +1,12 @@
+[Unit]
+Description=Persistent SSH Tunnel to GPU Server
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/ssh -p 30582 -N -L 8080:localhost:8080 -o ServerAliveInterval=60 -o ServerAliveCountMax=3 -o StrictHostKeyChecking=no -i /root/.ssh/id_ed25519 root@148.135.185.7
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

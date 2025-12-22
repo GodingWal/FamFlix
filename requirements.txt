@@ -1,0 +1,11 @@
+torch
+torchaudio
+pydub
+faster-whisper
+torchcodec
+fastapi
+uvicorn
+python-multipart
+
+httpx
+pydantic
