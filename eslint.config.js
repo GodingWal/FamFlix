@@ -22,6 +22,7 @@ export default [
       '.eslintrc.js',
       '.venv/**',
       '**/site-packages/**',
+      'shared/vendor/**',
     ],
   },
   ...compat.config({
@@ -46,18 +47,24 @@ export default [
     },
     plugins: ['react', 'react-hooks', '@typescript-eslint'],
     rules: {
-      '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
+      // TypeScript rules
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+
+      // React rules
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'react/no-unescaped-entities': 'off',
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'off',
-      'no-console': 'off',
+      'react-hooks/exhaustive-deps': 'warn',
+
+      // General rules
+      'no-console': 'warn',
       'no-debugger': 'error',
+      'prefer-const': 'error',
       'no-var': 'error',
     },
     settings: {

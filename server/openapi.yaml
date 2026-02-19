@@ -1,0 +1,537 @@
+openapi: 3.1.0
+info:
+  title: FamFlix API
+  version: 1.0.0
+  description: |
+    FamFlix API for family-friendly personalized video content with voice cloning and story narration.
+    Authentication is handled via httpOnly cookies (JWT access + refresh tokens).
+  contact:
+    name: FamFlix Team
+
+servers:
+  - url: /api
+    description: API base path
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: accessToken
+      description: httpOnly JWT access token cookie
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        role:
+          type: string
+          enum: [user, admin]
+        plan:
+          type: string
+          enum: [free, starter, pro, family]
+    VoiceProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        name:
+          type: string
+        provider:
+          type: string
+        status:
+          type: string
+          enum: [pending, processing, ready, failed]
+    Video:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        userId:
+          type: string
+    TemplateVideo:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        thumbnailUrl:
+          type: string
+        videoUrl:
+          type: string
+        isActive:
+          type: boolean
+
+security:
+  - cookieAuth: []
+
+paths:
+  # ── Authentication ──────────────────────────────────────────
+  /auth/register:
+    post:
+      tags: [Authentication]
+      summary: Register a new user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, username, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                username:
+                  type: string
+                password:
+                  type: string
+                  minLength: 8
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+      responses:
+        '201':
+          description: User created, tokens set via httpOnly cookies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  accessToken:
+                    type: string
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/login:
+    post:
+      tags: [Authentication]
+      summary: Login with email and password
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful, tokens set via httpOnly cookies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  accessToken:
+                    type: string
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/me:
+    get:
+      tags: [Authentication]
+      summary: Get current authenticated user
+      responses:
+        '200':
+          description: Current user profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Not authenticated
+
+  /auth/refresh:
+    post:
+      tags: [Authentication]
+      summary: Refresh access token
+      responses:
+        '200':
+          description: New tokens issued via cookies
+        '401':
+          description: Invalid or expired refresh token
+
+  /auth/logout:
+    post:
+      tags: [Authentication]
+      summary: Logout and clear cookies
+      responses:
+        '200':
+          description: Logged out
+
+  # ── Videos ──────────────────────────────────────────────────
+  /videos:
+    get:
+      tags: [Videos]
+      summary: List user videos
+      parameters:
+        - name: familyId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of videos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Video'
+
+  /videos/{videoId}:
+    get:
+      tags: [Videos]
+      summary: Get video details
+      parameters:
+        - name: videoId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Video details
+    put:
+      tags: [Videos]
+      summary: Update video metadata
+      parameters:
+        - name: videoId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Video updated
+    delete:
+      tags: [Videos]
+      summary: Delete video
+      parameters:
+        - name: videoId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Video deleted
+
+  # ── Voice Profiles ─────────────────────────────────────────
+  /voice-profiles:
+    get:
+      tags: [Voice Profiles]
+      summary: List user voice profiles
+      responses:
+        '200':
+          description: List of voice profiles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VoiceProfile'
+    post:
+      tags: [Voice Profiles]
+      summary: Create voice clone from audio
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                audio:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+      responses:
+        '201':
+          description: Voice profile created
+
+  /voice-profiles/{profileId}:
+    delete:
+      tags: [Voice Profiles]
+      summary: Delete voice profile
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Profile deleted
+
+  /voice-profiles/{profileId}/preview:
+    post:
+      tags: [Voice Profiles]
+      summary: Generate voice preview
+      parameters:
+        - name: profileId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Preview audio URL
+
+  # ── Voice Jobs ──────────────────────────────────────────────
+  /voice-jobs:
+    post:
+      tags: [Voice Jobs]
+      summary: Create voice cloning job
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                recordings:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                metadata:
+                  type: string
+      responses:
+        '201':
+          description: Job created
+    get:
+      tags: [Voice Jobs]
+      summary: List voice jobs
+      responses:
+        '200':
+          description: List of voice jobs
+
+  /voice-jobs/{jobId}:
+    get:
+      tags: [Voice Jobs]
+      summary: Get voice job status
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Job details
+
+  # ── Template Videos ────────────────────────────────────────
+  /template-videos:
+    get:
+      tags: [Template Videos]
+      summary: List active template videos
+      security: []
+      responses:
+        '200':
+          description: List of template videos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TemplateVideo'
+    post:
+      tags: [Template Videos]
+      summary: Create template video (Admin)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                video:
+                  type: string
+                  format: binary
+                thumbnail:
+                  type: string
+                  format: binary
+                title:
+                  type: string
+                category:
+                  type: string
+      responses:
+        '201':
+          description: Template video created
+
+  # ── Video Projects ─────────────────────────────────────────
+  /video-projects:
+    post:
+      tags: [Video Projects]
+      summary: Create video project
+      responses:
+        '201':
+          description: Project created
+    get:
+      tags: [Video Projects]
+      summary: List video projects
+      responses:
+        '200':
+          description: List of video projects
+
+  /video-projects/{id}:
+    get:
+      tags: [Video Projects]
+      summary: Get video project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project details
+    patch:
+      tags: [Video Projects]
+      summary: Update video project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project updated
+    delete:
+      tags: [Video Projects]
+      summary: Delete video project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project deleted
+
+  /video-projects/{id}/process:
+    post:
+      tags: [Video Projects]
+      summary: Start video processing pipeline
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Processing started
+
+  # ── Families ───────────────────────────────────────────────
+  /families:
+    post:
+      tags: [Families]
+      summary: Create family
+      responses:
+        '201':
+          description: Family created
+    get:
+      tags: [Families]
+      summary: List families
+      responses:
+        '200':
+          description: List of families
+
+  # ── Billing ────────────────────────────────────────────────
+  /billing/checkout:
+    post:
+      tags: [Billing]
+      summary: Create Stripe checkout session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plan:
+                  type: string
+                  enum: [starter, pro, family]
+      responses:
+        '200':
+          description: Checkout session URL
+
+  /billing/webhook:
+    post:
+      tags: [Billing]
+      summary: Stripe webhook handler
+      security: []
+      responses:
+        '200':
+          description: Webhook processed
+
+  # ── Usage ──────────────────────────────────────────────────
+  /usage:
+    get:
+      tags: [Usage]
+      summary: Get usage quota status
+      responses:
+        '200':
+          description: Usage information
+
+  # ── Health ─────────────────────────────────────────────────
+  /health:
+    get:
+      tags: [System]
+      summary: Health check
+      security: []
+      responses:
+        '200':
+          description: Service healthy
