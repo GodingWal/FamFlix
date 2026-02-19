@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/hooks/useAuth";
+import { NotificationCenter } from "@/components/NotificationCenter";
 
 export function Navigation() {
   const [location] = useLocation();
@@ -36,7 +37,7 @@ export function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <nav aria-label="Main navigation" className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -69,14 +70,7 @@ export function Navigation() {
           {/* Right side */}
           <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Notifications */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-muted-foreground hover:text-foreground p-2 touch-target hidden sm:flex"
-              data-testid="button-notifications"
-            >
-              <i className="fas fa-bell text-lg"></i>
-            </Button>
+            <NotificationCenter />
 
             {/* User Menu */}
             <DropdownMenu>
@@ -142,6 +136,8 @@ export function Navigation() {
               size="sm"
               className="md:hidden touch-target p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
               data-testid="button-mobile-menu"
             >
               <i className={`fas text-xl ${mobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>

@@ -1,0 +1,25 @@
+{
+  "name": "FamFlix",
+  "short_name": "FamFlix",
+  "description": "AI-powered family video creation platform with voice cloning and story narration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "categories": ["entertainment", "social"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

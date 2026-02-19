@@ -4,6 +4,7 @@ import { Navigation } from "@/components/Navigation";
 import { VideoCard } from "@/components/VideoCard";
 import { QuickActionCard } from "@/components/QuickActionCard";
 import { CollaboratorCard } from "@/components/CollaboratorCard";
+import { OnboardingChecklist } from "@/components/OnboardingChecklist";
 import { useAuth } from "@/hooks/useAuth";
 import { api } from "@/lib/api";
 import { Button } from "@/components/ui/button";
@@ -37,8 +38,13 @@ export default function Dashboard() {
         <AdBanner placement="banner" />
       </div>
       
+      {/* Onboarding Checklist */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <OnboardingChecklist />
+      </div>
+
       {/* Hero Section */}
-      <main className="pt-4">
+      <main id="main-content" className="pt-4">
         <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-secondary py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center animate-fade-in">

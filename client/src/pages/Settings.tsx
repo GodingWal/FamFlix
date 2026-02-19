@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
+import { useTheme } from "@/hooks/useTheme";
 import { Navigation } from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,8 @@ import { Switch } from "@/components/ui/switch";
 export default function Settings() {
   const { user } = useAuth();
   const { toast } = useToast();
-  
+  const { theme, setTheme } = useTheme();
+
   // Notification settings
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [pushNotifications, setPushNotifications] = useState(true);
@@ -35,11 +37,37 @@ export default function Settings() {
     });
   };
 
-  const handleExportData = () => {
-    toast({
-      title: "Data export requested",
-      description: "Your data export will be ready for download within 24 hours.",
-    });
+  const [exporting, setExporting] = useState(false);
+
+  const handleExportData = async () => {
+    setExporting(true);
+    try {
+      const response = await fetch("/api/account/export", {
+        credentials: "include",
+      });
+      if (!response.ok) throw new Error("Export failed");
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `famflix-export-${Date.now()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast({
+        title: "Export complete",
+        description: "Your data has been downloaded.",
+      });
+    } catch {
+      toast({
+        title: "Export failed",
+        description: "Could not export your data. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setExporting(false);
+    }
   };
 
   const handleDeleteAccount = () => {
@@ -222,22 +250,33 @@ export default function Settings() {
                   <Button
                     variant="outline"
                     onClick={handleExportData}
+                    disabled={exporting}
                     className="flex items-center justify-center"
                     data-testid="button-export-data"
                   >
-                    <i className="fas fa-download mr-2"></i>
-                    Export My Data
+                    <i className={`fas ${exporting ? 'fa-spinner fa-spin' : 'fa-download'} mr-2`}></i>
+                    {exporting ? "Exporting..." : "Export My Data"}
                   </Button>
                   
-                  <Button
-                    variant="outline"
-                    onClick={() => toast({ title: "Coming Soon", description: "Theme customization will be available soon." })}
-                    className="flex items-center justify-center"
-                    data-testid="button-change-theme"
-                  >
-                    <i className="fas fa-palette mr-2"></i>
-                    Change Theme
-                  </Button>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="theme-select">Theme</Label>
+                  <div className="flex gap-2">
+                    {(["light", "dark", "system"] as const).map((t) => (
+                      <Button
+                        key={t}
+                        variant={theme === t ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setTheme(t)}
+                        className="flex-1 capitalize"
+                        data-testid={`button-theme-${t}`}
+                      >
+                        <i className={`fas ${t === "light" ? "fa-sun" : t === "dark" ? "fa-moon" : "fa-desktop"} mr-2`}></i>
+                        {t}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
                 
                 <Separator />

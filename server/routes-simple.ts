@@ -531,6 +531,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Data export – returns all user-owned data as a JSON download (GDPR compliance)
+  app.get('/api/account/export', authenticateToken, async (req: AuthRequest, res) => {
+    try {
+      const userId = req.user!.id;
+      const [user, videos, voiceProfiles, families] = await Promise.all([
+        storage.getUser(userId),
+        storage.getVideosByUserId(userId),
+        storage.getVoiceProfilesByUserId(userId),
+        storage.getFamiliesByUserId(userId),
+      ]);
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const exportData = {
+        exportedAt: new Date().toISOString(),
+        user: {
+          id: user.id,
+          email: user.email,
+          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          role: user.role,
+          plan: user.plan,
+          createdAt: user.createdAt,
+        },
+        videos: videos || [],
+        voiceProfiles: (voiceProfiles || []).map((vp: Record<string, unknown>) => ({
+          id: vp.id,
+          name: vp.name,
+          provider: vp.provider,
+          status: vp.status,
+          createdAt: vp.createdAt,
+        })),
+        families: families || [],
+      };
+
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Content-Disposition', `attachment; filename="famflix-export-${userId}.json"`);
+      res.json(exportData);
+    } catch (error) {
+      console.error('Data export error:', error);
+      res.status(500).json({ error: "Failed to export data" });
+    }
+  });
+
   // Family management routes
   app.post('/api/families', authenticateToken, async (req: AuthRequest, res) => {
     try {
