@@ -1,6 +1,9 @@
 import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
 import cookieParser from 'cookie-parser';
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import { registerRoutes } from "./routes-simple";
 import { setupVite, serveStatic, log } from "./vite";
 
@@ -62,6 +65,17 @@ app.use((req, res, next) => {
   });
 
   next();
+});
+
+// Serve the OpenAPI spec for API documentation
+const __dirname_server = dirname(fileURLToPath(import.meta.url));
+app.get('/api/docs/openapi.yaml', (_req: Request, res: Response) => {
+  try {
+    const spec = readFileSync(join(__dirname_server, 'openapi.yaml'), 'utf-8');
+    res.type('text/yaml').send(spec);
+  } catch {
+    res.status(404).json({ error: 'OpenAPI spec not found' });
+  }
 });
 
 (async () => {
