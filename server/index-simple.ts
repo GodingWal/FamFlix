@@ -1,11 +1,20 @@
 import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
+import * as Sentry from "@sentry/node";
 import cookieParser from 'cookie-parser';
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { registerRoutes } from "./routes-simple";
 import { setupVite, serveStatic, log } from "./vite";
+
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    environment: process.env.NODE_ENV || 'development',
+    tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.2 : 1.0,
+  });
+}
 
 const app = express();
 
@@ -100,6 +109,10 @@ app.get('/api/docs/openapi.yaml', (_req: Request, res: Response) => {
       path: req.path,
       method: req.method,
     });
+
+    if (status >= 500) {
+      Sentry.captureException(err);
+    }
 
     // Don't expose internal errors in production
     const responseMessage = process.env.NODE_ENV === 'production' && status === 500

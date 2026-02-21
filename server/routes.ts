@@ -1345,17 +1345,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(403).json({ error: "Access denied" });
       }
 
-      // Verify user has access to this audio file
-      // TODO: In production, add proper access control checks
-
       try {
         // Check if file exists
         await fs.promises.access(audioFilePath);
 
+        // Infer Content-Type from file extension
+        const ext = filename.split('.').pop()?.toLowerCase();
+        const contentTypeMap: Record<string, string> = {
+          wav: 'audio/wav',
+          mp3: 'audio/mpeg',
+          webm: 'audio/webm',
+          ogg: 'audio/ogg',
+        };
+        const contentType = (ext && contentTypeMap[ext]) || 'audio/wav';
+
         // Set proper headers for audio streaming
-        res.setHeader('Content-Type', 'audio/wav');
+        res.setHeader('Content-Type', contentType);
         res.setHeader('Accept-Ranges', 'bytes');
-        res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
+        res.setHeader('Cache-Control', 'private, max-age=3600');
 
         // Stream the actual audio file
         const fileStream = fs.createReadStream(audioFilePath);

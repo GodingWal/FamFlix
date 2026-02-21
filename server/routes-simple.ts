@@ -13,6 +13,7 @@ import {
   generateAccessToken,
   generateRefreshToken,
   authenticateToken,
+  requireRole,
   refreshTokens,
   type AuthRequest
 } from "./middleware/auth-simple";
@@ -202,7 +203,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   );
 
-  app.use('/api/admin', authenticateToken, adminRouter);
+  app.use('/api/admin', authenticateToken, requireRole(['admin']), adminRouter);
 
   // Serve audio files securely (previews and TTS generations)
   app.get('/api/audio/:filename', authenticateToken, async (req: AuthRequest, res) => {

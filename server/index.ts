@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import * as Sentry from "@sentry/node";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import { config } from "./config";
@@ -9,6 +10,14 @@ import {
   secureCookieParser,
   sanitizeRequest
 } from "./middleware/security";
+
+if (config.SENTRY_DSN) {
+  Sentry.init({
+    dsn: config.SENTRY_DSN,
+    environment: config.NODE_ENV,
+    tracesSampleRate: config.NODE_ENV === 'production' ? 0.2 : 1.0,
+  });
+}
 
 const app = express();
 
@@ -87,6 +96,10 @@ app.use((req, res, next) => {
       ip: req.ip,
       userAgent: req.get('User-Agent'),
     });
+
+    if (status >= 500) {
+      Sentry.captureException(err);
+    }
 
     // Don't expose internal errors in production
     const responseMessage = config.NODE_ENV === 'production' && status === 500
