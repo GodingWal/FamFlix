@@ -32,12 +32,11 @@ async function dbRun(query: ReturnType<typeof sql>): Promise<any> {
   }
 }
 
+// All routes in this router are protected by authenticateToken + requireRole(['admin'])
+// applied at mount time in routes-simple.ts.
+
 router.get('/stats', async (req: AuthRequest, res) => {
   try {
-    if (req.user?.role !== 'admin') {
-      return res.status(403).json({ error: 'Access denied. Admin privileges required.' });
-    }
-
     const isActiveValue = isSQLite ? 1 : true;
 
     const totalUsers = await dbQueryOne(sql`SELECT COUNT(*) as count FROM users`);
@@ -46,17 +45,17 @@ router.get('/stats', async (req: AuthRequest, res) => {
     const totalVideos = await dbQueryOne(sql`SELECT COUNT(*) as count FROM videos`);
 
     const recentUsers = await dbQuery(sql`
-      SELECT id, email, role, created_at 
-      FROM users 
-      ORDER BY created_at DESC 
+      SELECT id, email, role, created_at
+      FROM users
+      ORDER BY created_at DESC
       LIMIT 10
     `);
 
     const recentTemplateVideos = await dbQuery(sql`
       SELECT id, title, category, created_at
-      FROM template_videos 
+      FROM template_videos
       WHERE is_active = ${isActiveValue}
-      ORDER BY created_at DESC 
+      ORDER BY created_at DESC
       LIMIT 10
     `);
 
@@ -82,12 +81,8 @@ router.get('/stats', async (req: AuthRequest, res) => {
 
 router.get('/users', async (req: AuthRequest, res) => {
   try {
-    if (req.user?.role !== 'admin') {
-      return res.status(403).json({ error: 'Access denied. Admin privileges required.' });
-    }
-
     const users = await dbQuery(sql`
-      SELECT 
+      SELECT
         u.id, u.email, u.role, u.created_at,
         COUNT(vp.id) as voice_profiles_count
       FROM users u
@@ -105,10 +100,6 @@ router.get('/users', async (req: AuthRequest, res) => {
 
 router.patch('/users/:id/role', async (req: AuthRequest, res) => {
   try {
-    if (req.user?.role !== 'admin') {
-      return res.status(403).json({ error: 'Access denied. Admin privileges required.' });
-    }
-
     const { id } = req.params;
     const { role } = req.body;
 
@@ -117,8 +108,8 @@ router.patch('/users/:id/role', async (req: AuthRequest, res) => {
     }
 
     await dbRun(sql`
-      UPDATE users 
-      SET role = ${role}, updated_at = CURRENT_TIMESTAMP 
+      UPDATE users
+      SET role = ${role}, updated_at = CURRENT_TIMESTAMP
       WHERE id = ${id}
     `);
 
@@ -131,12 +122,8 @@ router.patch('/users/:id/role', async (req: AuthRequest, res) => {
 
 router.get('/health', async (req: AuthRequest, res) => {
   try {
-    if (req.user?.role !== 'admin') {
-      return res.status(403).json({ error: 'Access denied. Admin privileges required.' });
-    }
-
     const dbCheck = await dbQueryOne(sql`SELECT 1 as healthy`);
-    
+
     const ttsHealthy = true;
 
     const health = {
@@ -149,7 +136,7 @@ router.get('/health', async (req: AuthRequest, res) => {
     res.json(health);
   } catch (error) {
     console.error('Error checking system health:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to check system health',
       database: false,
       tts: false,

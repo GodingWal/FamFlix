@@ -33,7 +33,7 @@
 
 ## 2. Security & Auth
 
-- [ ] Audit all routes for missing `requireAuth` middleware (especially admin routes — see `routes.ts:1349` TODO)
+- [x] Audit all routes for missing `requireAuth` middleware — admin router now uses `requireRole(['admin'])` at mount; stale TODO at audio route resolved
 - [ ] Enable email verification flow end-to-end (verify tokens land, links work)
 - [ ] Confirm password reset emails send and tokens expire correctly
 - [ ] CSRF tokens tested on all POST/PUT/DELETE endpoints
@@ -75,8 +75,8 @@
 ## 5. Monitoring & Error Tracking
 
 - [ ] Create Sentry project and get DSN
-- [ ] Wire Sentry into `ErrorBoundary.tsx` (two `// TODO` placeholders at lines 36 and 99)
-- [ ] Wire Sentry into backend uncaught exception handler
+- [x] Wire Sentry into `ErrorBoundary.tsx` — `@sentry/react` integrated; initialized in `main.tsx` via `VITE_SENTRY_DSN`
+- [x] Wire Sentry into backend uncaught exception handler — `@sentry/node` integrated in `index.ts` and `index-simple.ts` via `SENTRY_DSN`
 - [ ] Set up uptime monitoring (e.g. Better Uptime, UptimeRobot) on `/health`
 - [ ] Set up log aggregation (Papertrail, Logtail, Datadog, etc.)
 - [ ] Configure alerting for error spikes and job queue failures
@@ -86,7 +86,7 @@
 ## 6. Testing
 
 - [ ] Bring unit test coverage to 80% threshold (branches, functions, lines, statements)
-- [ ] Write integration tests for billing webhook handlers
+- [x] Write integration tests for billing webhook handlers — 11 tests covering checkout.session.completed, subscription.updated, subscription.deleted, and edge cases
 - [ ] Write integration tests for voice cloning job queue
 - [ ] Write integration tests for video processing pipeline
 - [ ] Add at least smoke-level E2E tests (Playwright): register → login → create story → subscribe
@@ -134,10 +134,10 @@
 
 ## 10. Documentation
 
-- [ ] Expand `README.md` from stub to full project overview + quick start
-- [ ] Document all required environment variables (beyond `.env.example` comments)
+- [x] Expand `README.md` from stub to full project overview + quick start
+- [x] Document all required environment variables (covered in README.md)
 - [ ] Document GPU setup for ML services (Chatterbox, RVC)
-- [ ] Document Stripe webhook setup steps
+- [x] Document Stripe webhook setup steps (covered in README.md)
 - [ ] Internal API documentation (or OpenAPI spec)
 
 ---

@@ -1,4 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
+import * as Sentry from '@sentry/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
@@ -32,9 +33,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
     // Log error to monitoring service
     console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
-    // TODO: Send to error tracking service like Sentry
-    // Sentry.captureException(error, { extra: errorInfo });
+    Sentry.captureException(error, { extra: { componentStack: errorInfo.componentStack } });
   }
 
   handleRetry = () => {
@@ -96,7 +95,6 @@ export class ErrorBoundary extends Component<Props, State> {
 export const useErrorHandler = () => {
   return (error: Error, errorInfo?: { componentStack?: string }) => {
     console.error('Error caught by useErrorHandler:', error, errorInfo);
-    // TODO: Send to error tracking service
-    // Sentry.captureException(error, { extra: errorInfo });
+    Sentry.captureException(error, { extra: errorInfo });
   };
 };
