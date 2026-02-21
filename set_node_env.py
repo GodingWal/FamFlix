@@ -32,4 +32,4 @@ def run_ssh_command(command):
                 break
 
 if __name__ == "__main__":
-    run_ssh_command("echo 'NODE_ENV=production' >> /var/www/famflix/.env && cat /var/www/famflix/.env | grep NODE_ENV")
+    run_ssh_command("echo 'NODE_ENV=production' >> /var/www/voxtree/.env && cat /var/www/voxtree/.env | grep NODE_ENV")

@@ -136,7 +136,7 @@ export default function Login() {
       const description = data?.message
         ?? (data?.requiresEmailVerification === false
           ? "Your account is ready to use. Sign in to get started."
-          : "Welcome to FamFlix! Check your email to verify your account.");
+          : "Welcome to VoxTree! Check your email to verify your account.");
 
       toast({
         title: "Account created!",
@@ -231,7 +231,7 @@ export default function Login() {
       
       <div className="w-full max-w-md mx-4">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold gradient-text mb-2">FamFlix</h1>
+          <h1 className="text-4xl font-bold gradient-text mb-2">VoxTree</h1>
           <p className="text-muted-foreground">Create magical family memories</p>
         </div>
 
@@ -239,7 +239,7 @@ export default function Login() {
           <CardHeader>
             <CardTitle className="text-2xl text-center">Welcome</CardTitle>
             <CardDescription className="text-center">
-              {activeTab === "login" ? "Sign in to your account" : "Create your FamFlix account"}
+              {activeTab === "login" ? "Sign in to your account" : "Create your VoxTree account"}
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -12,8 +12,8 @@ vite.config.ts.*
 .env.development.local
 .env.production.local
 .env.test.local
-famflix.db
-famflix.test.db
+voxtree.db
+voxtree.test.db
 uploads/
 .local/
 

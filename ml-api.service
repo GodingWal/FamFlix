@@ -1,5 +1,5 @@
 [Unit]
-Description=FamFlix ML API Service
+Description=VoxTree ML API Service
 After=network.target
 
 [Service]

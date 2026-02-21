@@ -17,9 +17,9 @@
 2. Create a database user and database:
    ```bash
    sudo -u postgres psql
-   CREATE USER famflix WITH PASSWORD 'password';
-   CREATE DATABASE famflix OWNER famflix;
-   GRANT ALL PRIVILEGES ON DATABASE famflix TO famflix;
+   CREATE USER voxtree WITH PASSWORD 'password';
+   CREATE DATABASE voxtree OWNER voxtree;
+   GRANT ALL PRIVILEGES ON DATABASE voxtree TO voxtree;
    \q
    ```
 
@@ -30,7 +30,7 @@
 
 4. Update the DATABASE_URL in `.env`:
    ```
-   DATABASE_URL="postgresql://famflix:password@localhost:5432/famflix"
+   DATABASE_URL="postgresql://voxtree:password@localhost:5432/voxtree"
    ```
 
 ### Option 2: Neon Cloud Database (Recommended)

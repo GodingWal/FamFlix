@@ -608,10 +608,10 @@ export default function Stories() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What are FamFlix Stories?",
+        name: "What are VoxTree Stories?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Stories are curated, age-appropriate scripts that families can personalize with AI voices and turn into narrated experiences inside FamFlix.",
+          text: "Stories are curated, age-appropriate scripts that families can personalize with AI voices and turn into narrated experiences inside VoxTree.",
         },
       },
       {
@@ -619,7 +619,7 @@ export default function Stories() {
         name: "How do I generate narration for a story?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Choose your favorite voice profile, select a story, and click request narration. FamFlix will create an AI-read performance and notify you when it is ready.",
+          text: "Choose your favorite voice profile, select a story, and click request narration. VoxTree will create an AI-read performance and notify you when it is ready.",
         },
       },
       {
@@ -637,19 +637,19 @@ export default function Stories() {
     <div className="min-h-screen bg-background text-foreground">
       <Seo
         title="Discover AI-narrated family stories"
-        description="Browse curated FamFlix stories, pair them with cloned family voices, and request immersive narrations in seconds."
+        description="Browse curated VoxTree stories, pair them with cloned family voices, and request immersive narrations in seconds."
         canonical={`${BASE_URL}/stories`}
         openGraph={{
           type: "website",
           url: `${BASE_URL}/stories`,
-          title: "Discover AI-narrated family stories | FamFlix",
+          title: "Discover AI-narrated family stories | VoxTree",
           description:
-            "Browse curated FamFlix stories, pair them with cloned family voices, and request immersive narrations in seconds.",
+            "Browse curated VoxTree stories, pair them with cloned family voices, and request immersive narrations in seconds.",
         }}
         twitter={{
-          title: "Discover AI-narrated family stories | FamFlix",
+          title: "Discover AI-narrated family stories | VoxTree",
           description:
-            "Explore ready-made FamFlix story scripts and instantly generate narrated performances with your family's AI voices.",
+            "Explore ready-made VoxTree story scripts and instantly generate narrated performances with your family's AI voices.",
         }}
         jsonLd={faqSchema}
       />

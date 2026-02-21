@@ -1,5 +1,5 @@
 // IndexedDB utility for storing recordings and progress
-const DB_NAME = 'FamFlixR';
+const DB_NAME = 'VoxTree';
 const DB_VERSION = 1;
 const RECORDINGS_STORE = 'recordings';
 const PROGRESS_STORE = 'progress';

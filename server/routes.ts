@@ -322,7 +322,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       res.status(201).json({
-        message: 'Thanks for reaching out! A member of the FamFlix team will be in touch soon.',
+        message: 'Thanks for reaching out! A member of the VoxTree team will be in touch soon.',
       });
     } catch (error) {
       if (error instanceof z.ZodError) {

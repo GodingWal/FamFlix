@@ -1,6 +1,6 @@
-# FamFlix
+# VoxTree
 
-FamFlix is a family-focused video personalization platform that lets families create personalized videos and stories with AI-powered voice cloning. Upload a video template, clone a family member's voice, and get back a custom video where that voice narrates the story.
+VoxTree is a family-focused video personalization platform that lets families create personalized videos and stories with AI-powered voice cloning. Upload a video template, clone a family member's voice, and get back a custom video where that voice narrates the story.
 
 ---
 
@@ -42,8 +42,8 @@ FamFlix is a family-focused video personalization platform that lets families cr
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/GodingWal/FamFlix.git
-cd FamFlix
+git clone https://github.com/GodingWal/VoxTree.git
+cd VoxTree
 npm install
 ```
 
@@ -80,7 +80,7 @@ All variables are validated at startup via Zod. A full list is in `.env.example`
 
 | Variable | Description |
 |----------|-------------|
-| `DATABASE_URL` | PostgreSQL connection string, e.g. `postgresql://user:pass@localhost:5432/famflix` |
+| `DATABASE_URL` | PostgreSQL connection string, e.g. `postgresql://user:pass@localhost:5432/voxtree` |
 | `JWT_SECRET` | >= 32-character secret for access tokens |
 | `JWT_REFRESH_SECRET` | >= 32-character secret for refresh tokens |
 | `SESSION_SECRET` | >= 32-character secret for session signing |
@@ -128,7 +128,7 @@ All variables are validated at startup via Zod. A full list is in `.env.example`
 ## Project Structure
 
 ```
-FamFlix/
+VoxTree/
 ├── client/src/          # React frontend
 │   ├── components/      # Shared UI components (including ErrorBoundary)
 │   ├── pages/           # Page-level components

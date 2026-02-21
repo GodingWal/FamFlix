@@ -13,12 +13,12 @@ apt-get install -y nodejs
 npm install -g pm2
 
 # Setup app directory
-mkdir -p /var/www/famflix
-cd /var/www/famflix
+mkdir -p /var/www/voxtree
+cd /var/www/voxtree
 
 # Extract code
 # Assuming deploy.tar.gz is in /root/
-tar -xzf /root/deploy.tar.gz -C /var/www/famflix
+tar -xzf /root/deploy.tar.gz -C /var/www/voxtree
 
 # Install dependencies
 npm install
@@ -27,6 +27,6 @@ npm install
 npm run build
 
 # Start with PM2
-pm2 start dist/index.js --name famflix --spa
+pm2 start dist/index.js --name voxtree --spa
 pm2 save
 pm2 startup

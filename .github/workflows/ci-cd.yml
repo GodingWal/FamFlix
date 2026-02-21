@@ -52,14 +52,14 @@ jobs:
 
       - name: Start Redis
         run: |
-          docker run -d --name famflix-redis -p 6379:6379 redis:7
+          docker run -d --name voxtree-redis -p 6379:6379 redis:7
 
       - name: Start Postgres (only for postgres matrix)
         if: ${{ matrix.db == 'postgres' }}
         run: |
-          docker run -d --name famflix-postgres \
+          docker run -d --name voxtree-postgres \
             -e POSTGRES_PASSWORD=postgres \
-            -e POSTGRES_DB=famflix_test \
+            -e POSTGRES_DB=voxtree_test \
             -p 5432:5432 \
             postgres:15
 
@@ -69,24 +69,24 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql-client
           for i in {1..60}; do
-            if PGPASSWORD=postgres psql -h localhost -U postgres -d famflix_test -c "SELECT 1" >/dev/null 2>&1; then
+            if PGPASSWORD=postgres psql -h localhost -U postgres -d voxtree_test -c "SELECT 1" >/dev/null 2>&1; then
               echo "Postgres is ready"; break; fi; echo "Waiting for Postgres..."; sleep 1; done
 
       - name: Prepare Postgres extensions
         if: ${{ matrix.db == 'postgres' }}
         run: |
-          PGPASSWORD=postgres psql -h localhost -U postgres -d famflix_test -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+          PGPASSWORD=postgres psql -h localhost -U postgres -d voxtree_test -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
 
       - name: Setup test database (${{ matrix.db }})
         run: npm run db:push
         env:
-          DATABASE_URL: ${{ matrix.db == 'postgres' && 'postgresql://postgres:postgres@localhost:5432/famflix_test' || 'file:./famflix.test.db' }}
+          DATABASE_URL: ${{ matrix.db == 'postgres' && 'postgresql://postgres:postgres@localhost:5432/voxtree_test' || 'file:./voxtree.test.db' }}
 
       - name: Run tests (${{ matrix.db }})
         run: npm run test:coverage
         env:
           NODE_ENV: test
-          DATABASE_URL: ${{ matrix.db == 'postgres' && 'postgresql://postgres:postgres@localhost:5432/famflix_test' || 'file:./famflix.test.db' }}
+          DATABASE_URL: ${{ matrix.db == 'postgres' && 'postgresql://postgres:postgres@localhost:5432/voxtree_test' || 'file:./voxtree.test.db' }}
           REDIS_URL: redis://localhost:6379
           JWT_SECRET: test-secret
           JWT_REFRESH_SECRET: test-refresh-secret

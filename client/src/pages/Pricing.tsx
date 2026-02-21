@@ -108,7 +108,7 @@ export default function Pricing() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <section className="text-center space-y-4">
             <Badge variant="outline" className="uppercase tracking-wide">Flexible plans for every family</Badge>
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Choose the perfect FamFlix plan</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Choose the perfect VoxTree plan</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Start free and unlock premium storytelling experiences with advanced voice cloning, cinematic exports,
               and collaborative family workspaces.

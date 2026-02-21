@@ -32,4 +32,4 @@ def run_ssh_command(command):
                 break
 
 if __name__ == "__main__":
-    run_ssh_command("pm2 restart famflix")
+    run_ssh_command("pm2 restart voxtree")

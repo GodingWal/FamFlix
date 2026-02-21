@@ -1,7 +1,7 @@
 import sqlite3
 import sys
 
-DB_PATH = 'famflix.db'
+DB_PATH = 'voxtree.db'
 EMAIL = 'gwal325@gmail.com'
 
 def update_user():

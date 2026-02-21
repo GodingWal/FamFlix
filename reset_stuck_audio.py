@@ -2,7 +2,7 @@ import sqlite3
 import time
 
 try:
-    conn = sqlite3.connect('famflix.db')
+    conn = sqlite3.connect('voxtree.db')
     cursor = conn.cursor()
     
     story_id = '8p46vkwmr2xmi90vpq6' # The Sleepy Bear ID from logs

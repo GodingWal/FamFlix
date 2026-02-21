@@ -32,4 +32,4 @@ def run_ssh_command(command):
                 break
 
 if __name__ == "__main__":
-    run_ssh_command("ln -s /var/www/famflix/dist/public /var/www/famflix/dist/server/public && ls -la /var/www/famflix/dist/server/public")
+    run_ssh_command("ln -s /var/www/voxtree/dist/public /var/www/voxtree/dist/server/public && ls -la /var/www/voxtree/dist/server/public")

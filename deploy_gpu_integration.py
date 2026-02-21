@@ -36,7 +36,7 @@ def deploy():
     pid2, fd2 = pty.fork()
     if pid2 == 0:
         os.execvp('ssh', ['ssh', '-o', 'StrictHostKeyChecking=no', 'root@172.238.175.82', 
-                          'cd /var/www/famflix && rm -rf dist && tar -xzf /root/deploy_gpu_integration.tar.gz && pm2 restart famflix'])
+                          'cd /var/www/voxtree && rm -rf dist && tar -xzf /root/deploy_gpu_integration.tar.gz && pm2 restart voxtree'])
     else:
         password_sent2 = False
         while True:

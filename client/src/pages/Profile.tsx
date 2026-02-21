@@ -295,7 +295,7 @@ export default function Profile() {
               <Card className="mt-6">
                 <CardHeader>
                   <CardTitle>Recent Activity</CardTitle>
-                  <CardDescription>Your latest actions on FamFlix</CardDescription>
+                  <CardDescription>Your latest actions on VoxTree</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">

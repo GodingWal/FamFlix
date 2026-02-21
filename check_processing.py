@@ -1,7 +1,7 @@
 import sqlite3
 
 try:
-    conn = sqlite3.connect('famflix.db')
+    conn = sqlite3.connect('voxtree.db')
     cursor = conn.cursor()
     
     print("Checking for any items with status='processing' or similar...")

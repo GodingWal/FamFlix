@@ -22,7 +22,7 @@ const configSchema = z.object({
 
 describe('Config Validation', () => {
   const validEnv = {
-    DATABASE_URL: 'postgresql://localhost:5432/famflix',
+    DATABASE_URL: 'postgresql://localhost:5432/voxtree',
     JWT_SECRET: 'a'.repeat(32),
     JWT_REFRESH_SECRET: 'b'.repeat(32),
     SESSION_SECRET: 'c'.repeat(32),

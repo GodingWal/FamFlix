@@ -10,7 +10,7 @@ services:
       - "5000:5000"
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://famflix:famflix_password@postgres:5432/famflix
+      - DATABASE_URL=postgresql://voxtree:voxtree_password@postgres:5432/voxtree
       - REDIS_URL=redis://redis:6379
       - JWT_SECRET=${JWT_SECRET:-your-super-secure-jwt-secret}
       - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET:-your-super-secure-refresh-secret}
@@ -38,7 +38,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://famflix:famflix_password@postgres:5432/famflix
+      - DATABASE_URL=postgresql://voxtree:voxtree_password@postgres:5432/voxtree
       - REDIS_URL=redis://redis:6379
       - JWT_SECRET=${JWT_SECRET:-your-super-secure-jwt-secret}
       - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET:-your-super-secure-refresh-secret}
@@ -58,9 +58,9 @@ services:
   postgres:
     image: postgres:15-alpine
     environment:
-      - POSTGRES_DB=famflix
-      - POSTGRES_USER=famflix
-      - POSTGRES_PASSWORD=famflix_password
+      - POSTGRES_DB=voxtree
+      - POSTGRES_USER=voxtree
+      - POSTGRES_PASSWORD=voxtree_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./server/db/migrations:/docker-entrypoint-initdb.d
@@ -68,7 +68,7 @@ services:
       - "5432:5432"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U famflix -d famflix"]
+      test: ["CMD-SHELL", "pg_isready -U voxtree -d voxtree"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -112,4 +112,4 @@ volumes:
 
 networks:
   default:
-    name: famflix-network
+    name: voxtree-network

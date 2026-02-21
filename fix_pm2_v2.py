@@ -33,5 +33,5 @@ def run_ssh_command(command):
 
 if __name__ == "__main__":
     # Go to directory and start with correct path
-    cmd = "cd /var/www/famflix && pm2 start dist/server/index.js --name famflix && pm2 save && pm2 startup"
+    cmd = "cd /var/www/voxtree && pm2 start dist/server/index.js --name voxtree && pm2 save && pm2 startup"
     run_ssh_command(cmd)

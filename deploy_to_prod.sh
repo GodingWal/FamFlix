@@ -2,7 +2,7 @@
 # Deploy to production server
 
 SERVER="root@172.238.175.82"
-REMOTE_DIR="/var/www/famflix"
+REMOTE_DIR="/var/www/voxtree"
 
 echo "🚀 Deploying to production server..."
 
@@ -25,7 +25,7 @@ rsync -avz server/routes/templateVideos.ts "$SERVER:$REMOTE_DIR/server/routes/" 
 
 echo "📝 Installing dependencies and restarting services..."
 ssh "$SERVER" << 'ENDSSH'
-cd /var/www/famflix
+cd /var/www/voxtree
 
 # Install Node dependencies
 echo "Installing Node.js dependencies..."
@@ -33,7 +33,7 @@ npm install
 
 # Restart PM2
 echo "Restarting PM2..."
-pm2 restart famflix
+pm2 restart voxtree
 
 echo "✅ Deployment complete!"
 ENDSSH
