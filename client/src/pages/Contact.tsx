@@ -75,7 +75,7 @@ export default function Contact() {
         <header className="space-y-4 text-center md:text-left">
           <h1 className="text-4xl font-bold">Let&apos;s plan your family&apos;s next premiere</h1>
           <p className="text-muted-foreground text-lg">
-            Share a few details about your crew and we&apos;ll help you pick the perfect FamFlix experience.
+            Share a few details about your crew and we&apos;ll help you pick the perfect VoxTree experience.
           </p>
         </header>
 

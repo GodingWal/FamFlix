@@ -300,7 +300,7 @@ const AdminDashboard: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `famflixr-users-${new Date().toISOString().split('T')[0]}.csv`;
+    link.download = `voxtree-users-${new Date().toISOString().split('T')[0]}.csv`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -781,7 +781,7 @@ const AdminDashboard: React.FC = () => {
                 <Card>
                   <CardHeader>
                     <CardTitle>Recent Users</CardTitle>
-                    <CardDescription>Latest members joining the FamFlixR community.</CardDescription>
+                    <CardDescription>Latest members joining the VoxTree community.</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="divide-y divide-border/60">

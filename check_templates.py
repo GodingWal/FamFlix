@@ -1,7 +1,7 @@
 import sqlite3
 import json
 
-conn = sqlite3.connect('famflix.db')
+conn = sqlite3.connect('voxtree.db')
 cursor = conn.cursor()
 
 cursor.execute("SELECT id, title, metadata FROM template_videos")

@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 
 try:
-    conn = sqlite3.connect('famflix.db')
+    conn = sqlite3.connect('voxtree.db')
     cursor = conn.cursor()
     
     current_ts = int(time.time())

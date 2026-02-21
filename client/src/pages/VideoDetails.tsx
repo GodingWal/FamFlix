@@ -65,7 +65,7 @@ export default function VideoDetails() {
         name: video.title,
         description:
           video.description ||
-          "Watch an AI-personalized family story created with FamFlix’s collaborative video studio.",
+          "Watch an AI-personalized family story created with VoxTree’s collaborative video studio.",
         uploadDate: video.createdAt,
         dateModified: video.updatedAt,
         ...(video.thumbnail ? { thumbnailUrl: [video.thumbnail] } : {}),
@@ -74,7 +74,7 @@ export default function VideoDetails() {
         mainEntityOfPage: canonicalUrl,
         publisher: {
           "@type": "Organization",
-          name: "FamFlix",
+          name: "VoxTree",
           url: BASE_URL,
         },
         potentialAction: {
@@ -131,9 +131,9 @@ export default function VideoDetails() {
       <>
         <Seo
           title="Loading video"
-          description="View AI-personalized family videos and share them with loved ones on FamFlix."
+          description="View AI-personalized family videos and share them with loved ones on VoxTree."
           canonical={canonicalUrl}
-          openGraph={{ url: canonicalUrl, title: "Loading video | FamFlix" }}
+          openGraph={{ url: canonicalUrl, title: "Loading video | VoxTree" }}
         />
         <div className="min-h-screen flex items-center justify-center bg-background">
           <LoadingSpinner size="lg" />
@@ -148,16 +148,16 @@ export default function VideoDetails() {
       <>
         <Seo
           title="Video unavailable"
-          description="We couldn't load this FamFlix video right now. Try returning to your library to explore more AI-crafted stories."
+          description="We couldn't load this VoxTree video right now. Try returning to your library to explore more AI-crafted stories."
           canonical={canonicalUrl}
           openGraph={{
             url: canonicalUrl,
-            title: "Video unavailable | FamFlix",
+            title: "Video unavailable | VoxTree",
             description:
-              "We couldn't load this FamFlix video right now. Try returning to your library to explore more AI-crafted stories.",
+              "We couldn't load this VoxTree video right now. Try returning to your library to explore more AI-crafted stories.",
           }}
           twitter={{
-            title: "Video unavailable | FamFlix",
+            title: "Video unavailable | VoxTree",
             description: message,
           }}
         />
@@ -178,13 +178,13 @@ export default function VideoDetails() {
       <>
         <Seo
           title="Video not found"
-          description="The FamFlix video you're looking for may have moved or been removed. Head back to your AI-powered library to keep creating."
+          description="The VoxTree video you're looking for may have moved or been removed. Head back to your AI-powered library to keep creating."
           canonical={canonicalUrl}
           openGraph={{
             url: canonicalUrl,
-            title: "Video not found | FamFlix",
+            title: "Video not found | VoxTree",
             description:
-              "The FamFlix video you're looking for may have moved or been removed. Head back to your AI-powered library to keep creating.",
+              "The VoxTree video you're looking for may have moved or been removed. Head back to your AI-powered library to keep creating.",
           }}
         />
         <div className="min-h-screen flex items-center justify-center bg-background px-4">
@@ -205,23 +205,23 @@ export default function VideoDetails() {
         title={video.title}
         description={
           video.description ||
-          "Watch an AI-personalized family story built with FamFlix voice cloning, scripting, and collaborative editing."
+          "Watch an AI-personalized family story built with VoxTree voice cloning, scripting, and collaborative editing."
         }
         canonical={canonicalUrl}
         openGraph={{
           type: "video.other",
           url: canonicalUrl,
-          title: `${video.title} | FamFlix`,
+          title: `${video.title} | VoxTree`,
           description:
             video.description ||
-            "Watch an AI-personalized family story built with FamFlix voice cloning, scripting, and collaborative editing.",
+            "Watch an AI-personalized family story built with VoxTree voice cloning, scripting, and collaborative editing.",
           ...(video.thumbnail ? { image: video.thumbnail } : {}),
         }}
         twitter={{
-          title: `${video.title} | FamFlix`,
+          title: `${video.title} | VoxTree`,
           description:
             video.description ||
-            "Watch an AI-personalized family story built with FamFlix voice cloning, scripting, and collaborative editing.",
+            "Watch an AI-personalized family story built with VoxTree voice cloning, scripting, and collaborative editing.",
           ...(video.thumbnail ? { image: video.thumbnail } : {}),
         }}
         jsonLd={videoJsonLd}

@@ -1,5 +1,5 @@
 """
-FamFlix ML API Server
+VoxTree ML API Server
 Handles ML tasks: voice cloning, story generation, video processing
 """
 
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 # Initialize FastAPI
 app = FastAPI(
-    title="FamFlix ML API",
+    title="VoxTree ML API",
     description="GPU-accelerated ML services for voice cloning and content generation",
     version="1.0.0"
 )

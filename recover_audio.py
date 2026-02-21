@@ -2,7 +2,7 @@ import sqlite3
 import time
 
 try:
-    conn = sqlite3.connect('famflix.db')
+    conn = sqlite3.connect('voxtree.db')
     cursor = conn.cursor()
     
     section_id = 'w5zidtnr28cmi90vppz'

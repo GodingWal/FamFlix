@@ -36,7 +36,7 @@ export const testimonials = [
     name: "Jordan & Priya",
     role: "New parents",
     quote:
-      "FamFlix helps us capture milestones without spending hours editing. The AI scripts are spot on!",
+      "VoxTree helps us capture milestones without spending hours editing. The AI scripts are spot on!",
   },
   {
     name: "Grandma June",

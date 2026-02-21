@@ -32,4 +32,4 @@ def run_ssh_command(command):
                 break
 
 if __name__ == "__main__":
-    run_ssh_command("pm2 logs famflix --lines 50 --nostream")
+    run_ssh_command("pm2 logs voxtree --lines 50 --nostream")

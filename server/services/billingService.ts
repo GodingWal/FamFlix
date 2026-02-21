@@ -11,11 +11,11 @@ type PaidSubscriptionPlan = Exclude<SubscriptionPlan, "free">;
 const PLAN_DETAILS: Record<PaidSubscriptionPlan, { amount: number; name: string }> = {
   premium: {
     amount: 2000, // $20.00
-    name: "FamFlix Premium",
+    name: "VoxTree Premium",
   },
   pro: {
     amount: 4000, // $40.00
-    name: "FamFlix Pro",
+    name: "VoxTree Pro",
   },
 };
 

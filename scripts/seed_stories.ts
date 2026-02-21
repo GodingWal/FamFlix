@@ -69,13 +69,13 @@ async function seed() {
         console.log("User gwal325@gmail.com not found. Creating system user...");
         try {
             // Check if system user exists first
-            const sysUser = await storage.getUserByEmail("system@famflix.com");
+            const sysUser = await storage.getUserByEmail("system@voxtree.com");
             if (sysUser) {
                 userId = sysUser.id;
             } else {
                 const newUser = await storage.createUser({
                     username: "system_story_seeder",
-                    email: "system@famflix.com",
+                    email: "system@voxtree.com",
                     password: "hashed_password_placeholder",
                     role: "admin"
                 });

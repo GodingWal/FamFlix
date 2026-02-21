@@ -77,11 +77,11 @@ class EmailService {
 
   async sendVerificationEmail({ to, token, username }: VerificationEmailPayload): Promise<void> {
     const verificationUrl = `${config.CLIENT_URL}/verify-email?token=${encodeURIComponent(token)}`;
-    const subject = "Verify your FamFlix account";
+    const subject = "Verify your VoxTree account";
     const greetingName = username || "there";
     const html = `
       <p>Hi ${greetingName},</p>
-      <p>Thanks for signing up for FamFlix! Please verify your email address by clicking the button below:</p>
+      <p>Thanks for signing up for VoxTree! Please verify your email address by clicking the button below:</p>
       <p>
         <a href="${verificationUrl}" style="display: inline-block; padding: 12px 20px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 6px;">
           Verify Email
@@ -90,21 +90,21 @@ class EmailService {
       <p>If the button doesn't work, copy and paste this link into your browser:</p>
       <p><a href="${verificationUrl}">${verificationUrl}</a></p>
       <p>This verification link will expire in 24 hours.</p>
-      <p>Welcome to the FamFlix family! 🎬</p>
+      <p>Welcome to the VoxTree family! 🎬</p>
     `;
 
-    const text = `Hi ${greetingName},\n\nVerify your FamFlix account by visiting: ${verificationUrl}\n\nThis link expires in 24 hours.`;
+    const text = `Hi ${greetingName},\n\nVerify your VoxTree account by visiting: ${verificationUrl}\n\nThis link expires in 24 hours.`;
 
     await this.sendEmail({ to, subject, html, text });
   }
 
   async sendPasswordResetEmail({ to, token, username }: PasswordResetEmailPayload): Promise<void> {
     const resetUrl = `${config.CLIENT_URL}/reset-password?token=${encodeURIComponent(token)}`;
-    const subject = "Reset your FamFlix password";
+    const subject = "Reset your VoxTree password";
     const greetingName = username || "there";
     const html = `
       <p>Hi ${greetingName},</p>
-      <p>We received a request to reset your FamFlix password. You can set a new password by clicking the button below:</p>
+      <p>We received a request to reset your VoxTree password. You can set a new password by clicking the button below:</p>
       <p>
         <a href="${resetUrl}" style="display: inline-block; padding: 12px 20px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 6px;">
           Reset Password
@@ -114,10 +114,10 @@ class EmailService {
       <p>If the button doesn't work, copy and paste this link into your browser:</p>
       <p><a href="${resetUrl}">${resetUrl}</a></p>
       <p>Stay creative,</p>
-      <p>The FamFlix Team</p>
+      <p>The VoxTree Team</p>
     `;
 
-    const text = `Hi ${greetingName},\n\nReset your FamFlix password by visiting: ${resetUrl}\n\nIf you didn't request this, you can ignore this email. The link expires in 1 hour.`;
+    const text = `Hi ${greetingName},\n\nReset your VoxTree password by visiting: ${resetUrl}\n\nIf you didn't request this, you can ignore this email. The link expires in 1 hour.`;
 
     await this.sendEmail({ to, subject, html, text });
   }
@@ -135,7 +135,7 @@ class EmailService {
       return;
     }
 
-    const subject = `New FamFlix lead from ${payload.name}`;
+    const subject = `New VoxTree lead from ${payload.name}`;
     const html = `
       <p><strong>Name:</strong> ${payload.name}</p>
       <p><strong>Email:</strong> ${payload.email}</p>
@@ -144,7 +144,7 @@ class EmailService {
       <p>${payload.message.replace(/\n/g, '<br />')}</p>
     `;
 
-    const text = `New FamFlix lead
+    const text = `New VoxTree lead
 Name: ${payload.name}
 Email: ${payload.email}
 Family Size: ${payload.familySize}

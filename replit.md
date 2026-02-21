@@ -1,7 +1,7 @@
-# FamFlixW - Replit Environment Setup
+# VoxTree - Replit Environment Setup
 
 ## Overview
-FamFlixW is a full-stack application for video creation and voice cloning. It enables users to create videos, generate stories, and clone voices using AI-powered services. The project aims to provide a robust platform for content creators, offering features like AI transcription, text-to-speech synthesis with cloned voices, and a flexible subscription model.
+VoxTree is a full-stack application for video creation and voice cloning. It enables users to create videos, generate stories, and clone voices using AI-powered services. The project aims to provide a robust platform for content creators, offering features like AI transcription, text-to-speech synthesis with cloned voices, and a flexible subscription model.
 
 ## User Preferences
 I prefer detailed explanations and iterative development. Ask before making major changes. Do not make changes to the folder `Z`. Do not make changes to the file `Y`.

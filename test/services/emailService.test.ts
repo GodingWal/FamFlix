@@ -50,7 +50,7 @@ describe('EmailService', () => {
           SMTP_PORT: 587,
           SMTP_USER: 'test@test.com',
           SMTP_PASS: 'testpass',
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -76,7 +76,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 465,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -93,7 +93,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -128,7 +128,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -144,9 +144,9 @@ describe('EmailService', () => {
       expect(mockSendMail).toHaveBeenCalledTimes(1);
       const emailArgs = mockSendMail.mock.calls[0][0];
 
-      expect(emailArgs.from).toBe('noreply@famflix.com');
+      expect(emailArgs.from).toBe('noreply@voxtree.com');
       expect(emailArgs.to).toBe('user@example.com');
-      expect(emailArgs.subject).toBe('Verify your FamFlix account');
+      expect(emailArgs.subject).toBe('Verify your VoxTree account');
       expect(emailArgs.html).toContain('TestUser');
       expect(emailArgs.html).toContain('http://localhost:5000/verify-email?token=test-token-123');
       expect(emailArgs.text).toContain('http://localhost:5000/verify-email?token=test-token-123');
@@ -157,7 +157,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -178,7 +178,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -225,7 +225,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -241,9 +241,9 @@ describe('EmailService', () => {
       expect(mockSendMail).toHaveBeenCalledTimes(1);
       const emailArgs = mockSendMail.mock.calls[0][0];
 
-      expect(emailArgs.from).toBe('noreply@famflix.com');
+      expect(emailArgs.from).toBe('noreply@voxtree.com');
       expect(emailArgs.to).toBe('user@example.com');
-      expect(emailArgs.subject).toBe('Reset your FamFlix password');
+      expect(emailArgs.subject).toBe('Reset your VoxTree password');
       expect(emailArgs.html).toContain('TestUser');
       expect(emailArgs.html).toContain('http://localhost:5000/reset-password?token=reset-token-456');
       expect(emailArgs.text).toContain('http://localhost:5000/reset-password?token=reset-token-456');
@@ -254,7 +254,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -278,7 +278,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -302,8 +302,8 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
-          MARKETING_LEAD_EMAIL: 'sales@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
+          MARKETING_LEAD_EMAIL: 'sales@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -320,7 +320,7 @@ describe('EmailService', () => {
       expect(mockSendMail).toHaveBeenCalledTimes(1);
       const emailArgs = mockSendMail.mock.calls[0][0];
 
-      expect(emailArgs.to).toBe('sales@famflix.com');
+      expect(emailArgs.to).toBe('sales@voxtree.com');
       expect(emailArgs.subject).toContain('John Doe');
       expect(emailArgs.html).toContain('John Doe');
       expect(emailArgs.html).toContain('john@example.com');
@@ -333,7 +333,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -348,7 +348,7 @@ describe('EmailService', () => {
       });
 
       const emailArgs = mockSendMail.mock.calls[0][0];
-      expect(emailArgs.to).toBe('noreply@famflix.com');
+      expect(emailArgs.to).toBe('noreply@voxtree.com');
     });
 
     it('should handle multi-line messages properly', async () => {
@@ -356,7 +356,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));
@@ -409,7 +409,7 @@ describe('EmailService', () => {
         config: {
           SMTP_HOST: 'smtp.test.com',
           SMTP_PORT: 587,
-          FROM_EMAIL: 'noreply@famflix.com',
+          FROM_EMAIL: 'noreply@voxtree.com',
           CLIENT_URL: 'http://localhost:5000',
         },
       }));

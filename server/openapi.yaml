@@ -1,12 +1,12 @@
 openapi: 3.1.0
 info:
-  title: FamFlix API
+  title: VoxTree API
   version: 1.0.0
   description: |
-    FamFlix API for family-friendly personalized video content with voice cloning and story narration.
+    VoxTree API for family-friendly personalized video content with voice cloning and story narration.
     Authentication is handled via httpOnly cookies (JWT access + refresh tokens).
   contact:
-    name: FamFlix Team
+    name: VoxTree Team
 
 servers:
   - url: /api

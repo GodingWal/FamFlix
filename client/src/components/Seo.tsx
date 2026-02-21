@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
-export const SITE_NAME = "FamFlix";
-export const BASE_URL = "https://famflixr.com";
+export const SITE_NAME = "VoxTree";
+export const BASE_URL = "https://voxtree.com";
 
 export interface OpenGraphMeta {
   readonly title?: string;
@@ -33,7 +33,7 @@ export interface SeoProps {
 
 const DEFAULT_TITLE = `${SITE_NAME} | AI-powered family video creation platform`;
 const DEFAULT_DESCRIPTION =
-  "FamFlix helps families transform memories into cinematic stories with AI voice cloning, collaborative editing, and guided storytelling tools.";
+  "VoxTree helps families transform memories into cinematic stories with AI voice cloning, collaborative editing, and guided storytelling tools.";
 
 function ensureArray<T>(value?: T | T[]): T[] {
   if (!value) return [];
@@ -64,7 +64,7 @@ export function Seo({
 
   const twitterMeta: TwitterMeta = {
     card: "summary_large_image",
-    site: "@FamFlix",
+    site: "@VoxTree",
     title: pageTitle,
     description: pageDescription,
     ...twitter,

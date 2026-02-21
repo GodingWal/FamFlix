@@ -1,7 +1,7 @@
 # Video Selection & Personalization Setup Guide
 
 ## Overview
-FamFlixR has been updated to support a new workflow where users select from pre-existing template videos and personalize them with their voice and face, rather than uploading their own videos.
+VoxTree has been updated to support a new workflow where users select from pre-existing template videos and personalize them with their voice and face, rather than uploading their own videos.
 
 ## New Architecture
 
@@ -52,7 +52,7 @@ Two new tables have been added:
 
 ```bash
 # Apply the migration to add new tables
-sqlite3 famflix.db < server/db/migrations/004_add_template_videos_and_projects.sql
+sqlite3 voxtree.db < server/db/migrations/004_add_template_videos_and_projects.sql
 ```
 
 ### 2. Seed Template Videos

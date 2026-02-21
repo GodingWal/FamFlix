@@ -9,12 +9,12 @@ export default function Landing() {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "FamFlix AI Family Video Platform",
+    name: "VoxTree AI Family Video Platform",
     description:
-      "FamFlix helps families script, narrate, and produce AI-personalized videos with collaborative tools and guided workflows.",
+      "VoxTree helps families script, narrate, and produce AI-personalized videos with collaborative tools and guided workflows.",
     brand: {
       "@type": "Brand",
-      name: "FamFlix",
+      name: "VoxTree",
     },
     audience: {
       "@type": "Audience",
@@ -35,18 +35,18 @@ export default function Landing() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "How does FamFlix use AI to create family videos?",
+        name: "How does VoxTree use AI to create family videos?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "FamFlix blends AI voice cloning, smart scripting, and automated editing so families can produce polished keepsake videos without professional tools.",
+          text: "VoxTree blends AI voice cloning, smart scripting, and automated editing so families can produce polished keepsake videos without professional tools.",
         },
       },
       {
         "@type": "Question",
-        name: "Can multiple family members collaborate in FamFlix?",
+        name: "Can multiple family members collaborate in VoxTree?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. FamFlix supports shared projects, allowing family members to review scripts, record narrations, and personalize scenes together in real time.",
+          text: "Yes. VoxTree supports shared projects, allowing family members to review scripts, record narrations, and personalize scenes together in real time.",
         },
       },
     ],
@@ -56,19 +56,19 @@ export default function Landing() {
     <div className="min-h-screen bg-background text-foreground">
       <Seo
         title="Create AI-powered family videos"
-        description="Design cinematic family stories with FamFlix’s AI voice cloning, collaborative editing, and guided storytelling templates."
+        description="Design cinematic family stories with VoxTree’s AI voice cloning, collaborative editing, and guided storytelling templates."
         canonical={`${BASE_URL}/`}
         openGraph={{
           type: "website",
           url: `${BASE_URL}/`,
-          title: "Create AI-powered family videos | FamFlix",
+          title: "Create AI-powered family videos | VoxTree",
           description:
-            "Design cinematic family stories with FamFlix’s AI voice cloning, collaborative editing, and guided storytelling templates.",
+            "Design cinematic family stories with VoxTree’s AI voice cloning, collaborative editing, and guided storytelling templates.",
         }}
         twitter={{
-          title: "Create AI-powered family videos | FamFlix",
+          title: "Create AI-powered family videos | VoxTree",
           description:
-            "Produce AI-personalized keepsakes with FamFlix—voice cloning, smart scripts, and collaborative video editing for every generation.",
+            "Produce AI-personalized keepsakes with VoxTree—voice cloning, smart scripts, and collaborative video editing for every generation.",
         }}
         jsonLd={[productSchema, faqSchema]}
       />
@@ -77,7 +77,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold gradient-text">FamFlix</h1>
+              <h1 className="text-2xl font-bold gradient-text">VoxTree</h1>
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/login">
@@ -292,7 +292,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-6">Why Families Love FamFlix</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-6">Why Families Love VoxTree</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
@@ -343,7 +343,7 @@ export default function Landing() {
                 </div>
                 <h4 className="text-2xl font-bold mb-4">Crafted for Modern Families</h4>
                 <p className="text-muted-foreground">
-                  From daily updates to milestone documentaries, FamFlix combines secure sharing with joyful
+                  From daily updates to milestone documentaries, VoxTree combines secure sharing with joyful
                   storytelling tools that every generation can enjoy.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 text-left">
@@ -402,7 +402,7 @@ export default function Landing() {
           <div className="bg-card rounded-2xl p-10 shadow-xl text-center">
             <h4 className="text-3xl font-bold mb-4">Ready to Get Started?</h4>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of families already creating magical memories with FamFlix.
+              Join thousands of families already creating magical memories with VoxTree.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/login">
@@ -426,7 +426,7 @@ export default function Landing() {
       <footer className="border-t border-border py-12 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-2xl font-bold gradient-text mb-4">FamFlix</h1>
+            <h1 className="text-2xl font-bold gradient-text mb-4">VoxTree</h1>
             <p className="text-muted-foreground mb-6">Creating magical family memories with AI</p>
             <div className="flex justify-center space-x-6">
               <Link href="/login" className="text-muted-foreground hover:text-foreground transition-colors">

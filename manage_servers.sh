@@ -1,5 +1,5 @@
 #!/bin/bash
-# manage_servers.sh - Easy management of FamFlixR servers
+# manage_servers.sh - Easy management of VoxTree servers
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -11,15 +11,15 @@ LOG_DIR="logs"
 mkdir -p $LOG_DIR
 
 function log() {
-  echo -e "${GREEN}[FamFlix]${NC} $1"
+  echo -e "${GREEN}[VoxTree]${NC} $1"
 }
 
 function warn() {
-  echo -e "${YELLOW}[FamFlix]${NC} $1"
+  echo -e "${YELLOW}[VoxTree]${NC} $1"
 }
 
 function error() {
-  echo -e "${RED}[FamFlix]${NC} $1"
+  echo -e "${RED}[VoxTree]${NC} $1"
 }
 
 function stop_node() {

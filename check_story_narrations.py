@@ -1,7 +1,7 @@
 import sqlite3
 
 try:
-    conn = sqlite3.connect('famflix.db')
+    conn = sqlite3.connect('voxtree.db')
     cursor = conn.cursor()
     
     story_id = '63jme25ab1xmi90vppr'

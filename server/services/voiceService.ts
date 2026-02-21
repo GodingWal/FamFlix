@@ -261,7 +261,7 @@ export class VoiceService {
           const voiceId = await elevenLabs.createVoiceClone(
             name,
             processedRecordings.map(r => r.filePath),
-            `Voice clone for ${name} - Created via FamFlix`
+            `Voice clone for ${name} - Created via VoxTree`
           );
           providerRef = voiceId;
           console.log(`[voice] ElevenLabs voice created: ${voiceId}`);

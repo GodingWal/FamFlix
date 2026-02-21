@@ -1,7 +1,7 @@
 import sqlite3
 import bcrypt
 
-DB_PATH = 'famflix.db'
+DB_PATH = 'voxtree.db'
 EMAIL = 'gwal325@gmail.com'
 PASSWORD = 'password123'
 

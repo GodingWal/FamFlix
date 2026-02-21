@@ -42,7 +42,7 @@ export function Navigation() {
           {/* Logo */}
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex-shrink-0">
-              <h1 className="text-xl sm:text-2xl font-bold gradient-text" data-testid="link-logo">FamFlix</h1>
+              <h1 className="text-xl sm:text-2xl font-bold gradient-text" data-testid="link-logo">VoxTree</h1>
             </Link>
 
             {/* Desktop Navigation */}

@@ -30,4 +30,4 @@ def run_ssh_command(command):
                 break
 
 if __name__ == "__main__":
-    run_ssh_command("cd /var/www/famflix && ln -sf /var/www/famflix/dist/public /var/www/famflix/dist/server/public && pm2 restart famflix && sleep 2 && pm2 logs famflix --lines 20 --nostream")
+    run_ssh_command("cd /var/www/voxtree && ln -sf /var/www/voxtree/dist/public /var/www/voxtree/dist/server/public && pm2 restart voxtree && sleep 2 && pm2 logs voxtree --lines 20 --nostream")

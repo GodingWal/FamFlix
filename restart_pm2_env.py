@@ -34,6 +34,6 @@ def run_ssh_command(command):
 if __name__ == "__main__":
     # Load env and restart
     # Note: xargs might fail if there are quotes or special chars, but let's try simple approach first
-    # Better: use set -a; source .env; set +a; pm2 restart famflix --update-env
-    cmd = "cd /var/www/famflix && set -a && source .env && set +a && pm2 restart famflix --update-env"
+    # Better: use set -a; source .env; set +a; pm2 restart voxtree --update-env
+    cmd = "cd /var/www/voxtree && set -a && source .env && set +a && pm2 restart voxtree --update-env"
     run_ssh_command(cmd)

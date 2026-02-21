@@ -8,7 +8,7 @@ def scp_file():
     pid, fd = pty.fork()
     if pid == 0:
         # Child process
-        os.execvp('scp', ['scp', '-o', 'StrictHostKeyChecking=no', '-o', 'PreferredAuthentications=password,keyboard-interactive', '.env', 'root@172.238.175.82:/var/www/famflix/.env'])
+        os.execvp('scp', ['scp', '-o', 'StrictHostKeyChecking=no', '-o', 'PreferredAuthentications=password,keyboard-interactive', '.env', 'root@172.238.175.82:/var/www/voxtree/.env'])
     else:
         # Parent process
         password_sent = False
