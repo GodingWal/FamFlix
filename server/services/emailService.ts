@@ -83,7 +83,7 @@ class EmailService {
       <p>Hi ${greetingName},</p>
       <p>Thanks for signing up for VoxTree! Please verify your email address by clicking the button below:</p>
       <p>
-        <a href="${verificationUrl}" style="display: inline-block; padding: 12px 20px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 6px;">
+        <a href="${verificationUrl}" style="display: inline-block; padding: 12px 20px; background-color: #2D8B70; color: #ffffff; text-decoration: none; border-radius: 6px;">
           Verify Email
         </a>
       </p>
@@ -106,7 +106,7 @@ class EmailService {
       <p>Hi ${greetingName},</p>
       <p>We received a request to reset your VoxTree password. You can set a new password by clicking the button below:</p>
       <p>
-        <a href="${resetUrl}" style="display: inline-block; padding: 12px 20px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 6px;">
+        <a href="${resetUrl}" style="display: inline-block; padding: 12px 20px; background-color: #2D8B70; color: #ffffff; text-decoration: none; border-radius: 6px;">
           Reset Password
         </a>
       </p>
