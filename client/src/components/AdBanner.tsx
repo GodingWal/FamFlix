@@ -23,9 +23,9 @@ export function AdBanner({ placement = "banner", className = "" }: AdBannerProps
     switch (placement) {
       case "sidebar":
         return (
-          <div className={`bg-gradient-to-br from-purple-600/10 to-pink-600/10 border border-purple-500/20 rounded-lg p-4 ${className}`}>
+          <div className={`bg-gradient-to-br from-brand-green/10 to-brand-gold/10 border border-brand-green/20 rounded-lg p-4 ${className}`}>
             <div className="flex items-start justify-between mb-2">
-              <Sparkles className="h-5 w-5 text-purple-400" />
+              <Sparkles className="h-5 w-5 text-brand-green" />
               <button 
                 onClick={() => setDismissed(true)}
                 className="text-muted-foreground hover:text-foreground p-1"
@@ -50,8 +50,8 @@ export function AdBanner({ placement = "banner", className = "" }: AdBannerProps
         return (
           <div className={`bg-muted/50 border rounded-lg p-3 flex items-center justify-between ${className}`}>
             <div className="flex items-center gap-3">
-              <div className="bg-purple-600/20 p-2 rounded-full">
-                <Sparkles className="h-4 w-4 text-purple-400" />
+              <div className="bg-brand-green/20 p-2 rounded-full">
+                <Sparkles className="h-4 w-4 text-brand-green" />
               </div>
               <div>
                 <p className="text-sm font-medium">Want more features?</p>
@@ -82,10 +82,10 @@ export function AdBanner({ placement = "banner", className = "" }: AdBannerProps
       case "banner":
       default:
         return (
-          <div className={`bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-purple-600/20 border-y border-purple-500/20 py-2 px-4 ${className}`}>
+          <div className={`bg-gradient-to-r from-brand-green/20 via-brand-gold/10 to-brand-green/20 border-y border-brand-green/20 py-2 px-4 ${className}`}>
             <div className="max-w-7xl mx-auto flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Sparkles className="h-4 w-4 text-purple-400" />
+                <Sparkles className="h-4 w-4 text-brand-green" />
                 <span className="text-sm">
                   <span className="font-medium">Free Plan:</span>
                   <span className="text-muted-foreground ml-2">

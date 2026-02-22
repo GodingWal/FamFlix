@@ -974,7 +974,7 @@ export default function Stories() {
 
                           <Button
                             onClick={() => handleNarrate(false)}
-                            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                            className="bg-gradient-to-r from-brand-green via-primary to-brand-gold hover:from-brand-green/90 hover:via-primary/90 hover:to-brand-gold/90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
                             disabled={Boolean(
                               !selectedVoiceProfile ||
                               voicesLoading ||

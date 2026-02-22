@@ -63,6 +63,14 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        brand: {
+          green: "#2D8B70",
+          gold: "#F5A623",
+          cream: "#FFF8F0",
+          charcoal: "#2A2A2A",
+          coral: "#E8735A",
+          sage: "#A8D5BA",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],

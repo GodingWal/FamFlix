@@ -338,7 +338,7 @@ export default function VoiceCloningEnhanced() {
       <div className="container mx-auto px-4 pt-20 pb-6">
         {/* Hero Section */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-3">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-brand-gold bg-clip-text text-transparent mb-3">
             Voice Cloning Studio
           </h1>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
@@ -349,7 +349,7 @@ export default function VoiceCloningEnhanced() {
             onClick={() => setShowWizard(true)}
             disabled={isCreatingJob}
             size="lg"
-            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-r from-brand-green to-primary hover:from-brand-green/90 hover:to-primary/90 text-white px-8 py-3 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Mic className="h-5 w-5 mr-2" />
             Start Creating
@@ -383,8 +383,8 @@ export default function VoiceCloningEnhanced() {
           </div>
           
           <div className="bg-card rounded-2xl p-6 shadow-lg border border-border text-center">
-            <div className="w-12 h-12 bg-purple-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
-              <Mic className="h-6 w-6 text-purple-400" />
+            <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Mic className="h-6 w-6 text-primary" />
             </div>
             <p className="text-2xl font-bold text-white">{voiceProfiles.length}</p>
             <p className="text-sm text-slate-400">Profiles</p>
@@ -449,7 +449,7 @@ export default function VoiceCloningEnhanced() {
                   { step: "4", title: "Ready to Use", desc: "Your voice profile is ready for videos" }
                 ].map((item) => (
                   <div key={item.step} className="flex gap-4">
-                    <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-r from-brand-green to-primary text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                       {item.step}
                     </div>
                     <div>
@@ -473,7 +473,7 @@ export default function VoiceCloningEnhanced() {
                   "Ensure consistent audio levels"
                 ].map((tip, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-gradient-to-r from-brand-green to-primary rounded-full flex-shrink-0"></div>
                     <span className="text-slate-300">{tip}</span>
                   </div>
                 ))}
@@ -582,7 +582,7 @@ export default function VoiceCloningEnhanced() {
             {/* Voice Test Feature */}
             <div className="mt-6 rounded-2xl border border-border/60 bg-background/40 p-6">
               <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="h-5 w-5 text-purple-500" />
+                <Sparkles className="h-5 w-5 text-brand-gold" />
                 <h3 className="text-lg font-semibold text-white">Test Your Voice Clone</h3>
               </div>
               <p className="text-sm text-slate-400 mb-4">
