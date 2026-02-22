@@ -202,7 +202,7 @@ export default function VideoSelectionCatalog() {
         <div className="bg-gradient-to-br from-primary/10 via-background to-background border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-brand-gold bg-clip-text text-transparent">
                 Choose Your Video Template
               </h1>
               <p className="text-lg text-muted-foreground mb-8">
@@ -318,7 +318,7 @@ export default function VideoSelectionCatalog() {
                         className="w-full h-full object-cover transition-transform group-hover:scale-105"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-purple-500/20">
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-brand-sage/30">
                         <Video className="h-16 w-16 text-primary/50" />
                       </div>
                     )}

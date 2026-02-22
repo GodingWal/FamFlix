@@ -55,9 +55,9 @@ export const AudioWaveform: React.FC<AudioWaveformProps> = ({
       // Draw waveform
       ctx.lineWidth = 2;
       const waveGradient = ctx.createLinearGradient(0, 0, width, 0);
-      waveGradient.addColorStop(0, '#3b82f6');
-      waveGradient.addColorStop(0.5, '#8b5cf6');
-      waveGradient.addColorStop(1, '#ec4899');
+      waveGradient.addColorStop(0, '#2D8B70');
+      waveGradient.addColorStop(0.5, '#A8D5BA');
+      waveGradient.addColorStop(1, '#F5A623');
       ctx.strokeStyle = waveGradient;
       ctx.beginPath();
 

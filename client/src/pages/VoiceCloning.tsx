@@ -211,7 +211,7 @@ export default function VoiceCloning() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.lineWidth = 3;
-    ctx.strokeStyle = isRecording ? '#ef4444' : '#8b5cf6';
+    ctx.strokeStyle = isRecording ? '#E8735A' : '#2D8B70';
     ctx.beginPath();
 
     const sliceWidth = canvas.width / bufferLength;
@@ -524,7 +524,7 @@ export default function VoiceCloning() {
               {currentStep === 'intro' && (
                 <div className="space-y-8">
                   <div className="text-center">
-                    <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-primary/25">
+                    <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary to-brand-green flex items-center justify-center mb-6 shadow-lg shadow-primary/25">
                       <Mic className="w-12 h-12 text-white" />
                     </div>
                     <h2 className="text-2xl font-bold mb-2">Let's Get Started</h2>
@@ -747,7 +747,7 @@ export default function VoiceCloning() {
                     ))}
                   </div>
 
-                  <div className="bg-gradient-to-br from-primary/5 to-purple-500/5 border border-primary/20 rounded-xl p-6">
+                  <div className="bg-gradient-to-br from-primary/5 to-brand-sage/10 border border-primary/20 rounded-xl p-6">
                     <div className="flex items-start gap-3 mb-3">
                       <Info className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                       <div>
@@ -915,7 +915,7 @@ export default function VoiceCloning() {
               {currentStep === 'create' && (
                 <div className="space-y-8 text-center">
                   <div>
-                    <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary via-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-lg shadow-primary/25 animate-pulse">
+                    <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary via-brand-green to-brand-gold flex items-center justify-center mb-6 shadow-lg shadow-primary/25 animate-pulse">
                       <Sparkles className="w-12 h-12 text-white" />
                     </div>
                     <h2 className="text-2xl font-bold mb-2">Ready to Create!</h2>
@@ -963,7 +963,7 @@ export default function VoiceCloning() {
                     <Button 
                       onClick={handleCreateProfile}
                       disabled={createProfileMutation.isPending}
-                      className="flex-1 gap-2 bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90"
+                      className="flex-1 gap-2 bg-gradient-to-r from-primary to-brand-green hover:from-primary/90 hover:to-brand-green/90"
                     >
                       {createProfileMutation.isPending ? (
                         <>
